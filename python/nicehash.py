@@ -164,6 +164,16 @@ class private_api:
     def get_accounts(self):
         return self.request('GET', '/main/api/v2/accounting/accounts2/', '', None)
 
+    def get_rigs(self):
+        return self.request('GET', '/main/api/v2/mining/rigs2/', '', None)
+
+    def set_rig_action(self, action, group):
+        postdata = {
+            "group": group,
+            "action": action
+        }
+        return self.request('POST', '/main/api/v2/mining/rigs/status2/', '', postdata)
+
     def get_accounts_for_currency(self, currency):
         return self.request('GET', '/main/api/v2/accounting/account2/' + currency, '', None)
 
